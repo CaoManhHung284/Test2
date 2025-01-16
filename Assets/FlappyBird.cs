@@ -21,8 +21,15 @@ public class FlappyBird : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
-            rg.AddForce(Vector2.up * speed);   
+            Flap();
+            //rg.AddForce(Vector2.up * speed);   
         }
+    }
+    
+    private void Flap()
+    {
+        rg.velocity = Vector2.zero;
+        rg.AddForce(Vector2.up * speed, ForceMode2D.Impulse);
     }
 
     public void resetGame()
@@ -32,7 +39,7 @@ public class FlappyBird : MonoBehaviour
 
     void GameOver()
     {
-        gameOverObj. SetActive(true);
+        gameOverObj.SetActive(true);
         Time.timeScale = 0 ;
     }
 
